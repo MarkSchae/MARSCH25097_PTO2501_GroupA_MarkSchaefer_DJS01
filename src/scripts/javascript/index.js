@@ -1,0 +1,13 @@
+// Save the data using the class from the dataManager class
+
+import { genres, podcasts, seasons } from "./data";
+import dataManager from "./data-handling";
+
+// Save the static arrays to local storage as it makes it easier to filter for relational data after saved
+ 
+// Save the podcasts array to local storage
+dataManager.saveDataLocal('podcasts', podcasts);
+// Save the Genres array to local storage
+dataManager.saveDataLocal('genres', genres);
+// Save the Seasons array to local storage
+dataManager.saveDataLocal('seasons', seasons);

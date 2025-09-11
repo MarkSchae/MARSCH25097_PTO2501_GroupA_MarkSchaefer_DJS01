@@ -1,0 +1,11 @@
+One class to handle each concept
+
+A class to handle the data (loading and saving)
+
+A class to handle the creation of the task array object and to handle modyfying the task array object 
+
+A class to handle rendering the task array object 
+
+Combine the arrays of static data making it easier to display the data 
+
+Save the new combined array into local storage so that the new array can be saved after any changes

@@ -1,3 +1,14 @@
 /* Try to only create custom classes for repeated code otherwise it defeats the main point of Tailwind */
 
 @import "tailwindcss";
+
+/* 
+Modal is dynamicaly created
+Modal needs a cover img
+a title
+small img and heading of number of seasons
+The genre titles
+when the podcast information was updated */
+.genre-modal {
+    @apply bg-white ;
+}
