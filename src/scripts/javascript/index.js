@@ -2,12 +2,15 @@
 
 import { genres, podcasts, seasons } from "./data";
 import dataManager from "./data-handling";
+import relationalMapper from "./relational-mapper";
 
 // Save the static arrays to local storage as it makes it easier to filter for relational data after saved
- 
+
 // Save the podcasts array to local storage
 dataManager.saveDataLocal('podcasts', podcasts);
 // Save the Genres array to local storage
 dataManager.saveDataLocal('genres', genres);
 // Save the Seasons array to local storage
 dataManager.saveDataLocal('seasons', seasons);
+
+const combinedArrayData = relationalMapper.combineStaticArrays(podcasts, genres, seasons);
