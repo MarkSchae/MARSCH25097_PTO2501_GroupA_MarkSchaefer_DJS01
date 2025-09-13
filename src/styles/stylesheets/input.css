@@ -10,5 +10,17 @@ small img and heading of number of seasons
 The genre titles
 when the podcast information was updated */
 .genre-modal {
-    @apply bg-white ;
+    @apply bg-white;
+}
+
+.podcast-card-mobile {
+    @apply flex flex-col gap-4 justify-center items-center;
+}
+
+.podcast-card-desktop {
+    @apply grid grid-cols-4;
+}
+
+.genre-display-styling {
+    @apply flex flex-row justify-between bg-gray-400 rounded shadow shadow-black;
 }

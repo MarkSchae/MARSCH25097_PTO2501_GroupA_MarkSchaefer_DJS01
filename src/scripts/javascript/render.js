@@ -1,4 +1,5 @@
 import './data-handling.js';
+import { lastUpdated } from './helpers.js';
 
 // Write the class for rendering the static podcasts data
 export default class render {
@@ -10,11 +11,16 @@ export default class render {
     // Need to create the method for this creation of dom elements and loop through all podcasts
     renderPodcastsCard (podcasts) {
         // Clear the old to avoid duplicates
-        this.podcastsContainer,innerHTML = '';
+        this.podcastsContainer.innerHTML = '';
         podcasts.forEach (podcast => {
             // Loop the arrays and create the DOM elements to display the specific data
             // Need from podcasts array: cover img, title, amount of seasons, geners, last updated
             podcastCard = document.createElement('div');
+            const podcastCardClasses = 'podcast-card-mobile podcast-card-desktop';  
+
+            // Split by spaces into an array, then spread into classList.add
+            //el.classList.add(...classes.split(" "));
+            podcastCard.classList.add(...podcastCardClasses.split(' '));
 
             podcastCoverImg = document.createElement('img');
             podcastCoverImg.src = podcast.img;
@@ -28,20 +34,19 @@ export default class render {
 
             podcastGenres = document.createElement('div');
             podcast.genreNames.forEach(genreName => {
-                const genre = document.createElement('div').classList.add('genre-display-styling');
+                const genre = document.createElement('div');
+                genre.classList.add('genre-display-styling');
                 genre.innerHTML = genreName;
                 podcastGenres.append(genre);
             });
 
             podcastLastUpdated = document.createElement('div');
-            podcastLastUpdated.innerHTML = 
+            podcastLastUpdated.innerHTML = lastUpdated(podcast.updated);
 
             podcastCard.append(podcastCoverImg, podcastTitle, podcastSeasons, podcastGenres, podcastLastUpdated);
             // Append to podcastsContainer
             this.podcastsContainer.append(podcastCard);
         });
-        
-
     }
 } 
 

@@ -5,7 +5,7 @@ export default class dataManager {
         localStorage.setItem(key, JSON.stringify(data));
     }
 
-    static loadDataFromLocal () {
+    static loadDataFromLocal (key) {
         return JSON.parse(localStorage.getItem(key)) || [];
     }
 

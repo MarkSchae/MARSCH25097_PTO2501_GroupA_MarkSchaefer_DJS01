@@ -20,6 +20,7 @@ export default class relationalMapper {
                 seasonsData: podcasts.map(podcast => seasons.find(season => season.id === podcast.id))
             }
         });
+        return combinedArrays;
     }
 }
 
