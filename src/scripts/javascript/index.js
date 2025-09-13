@@ -14,3 +14,5 @@ dataManager.saveDataLocal('genres', genres);
 dataManager.saveDataLocal('seasons', seasons);
 
 const combinedArrayData = relationalMapper.combineStaticArrays(podcasts, genres, seasons);
+
+// Build the render class now and call render podcast card, podcast modal, etc on the combined data array
