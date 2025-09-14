@@ -1,4 +1,9 @@
 // Create a helper function for rendering the last updated object field in a human readable format
+/**
+ * Converts a date string to a human-readable "time ago" format.
+ * @param {string} lastedUpdatedDate - The ISO date string.
+ * @returns {string} A human-readable time difference like "3 days ago".
+ */
 export function lastUpdated (lastedUpdatedDate) {
     // Modify the data data to be human readable in a last update x days ago format
     // Get the current date object

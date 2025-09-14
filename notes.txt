@@ -13,3 +13,8 @@ Save the new combined array into local storage so that the new array can be save
 Need to find a way to be able to write autocomplete tailwind in a js file for adding classlist properties
 
 Think about a helper function for creating DOM elements
+
+Might need to seperate some logic and dom creation in the render class
+
+Remember to use functional programming for pure data (no modyfying arrays etc)
+

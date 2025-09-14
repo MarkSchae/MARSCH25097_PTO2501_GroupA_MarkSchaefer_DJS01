@@ -316,6 +316,9 @@
   }
 }
 .exit-btn {
+  position: fixed;
+  top: calc(var(--spacing) * 2);
+  right: calc(var(--spacing) * 2);
   height: calc(var(--spacing) * 3.5);
   width: calc(var(--spacing) * 3.5);
   cursor: pointer;

@@ -7,6 +7,14 @@
     Filter method to display certian parts of the arrays in the DOM*/
 
 // Using a seperate class to map out the static array data into a combined array thus linking the relational data in a more convienient package
+
+/**
+ * Combines podcasts, genres, and seasons arrays into a single array with linked data.
+ * @param {Object[]} podcasts - Array of podcast objects.
+ * @param {Object[]} genres - Array of genre objects.
+ * @param {Object[]} seasons - Array of season objects.
+ * @returns {Object[]} Array of combined podcast objects with genreNames and seasonsData properties.
+ */
 export default class relationalMapper {
     static combineStaticArrays (podcasts, genres, seasons) {
         const combinedArrays = podcasts.map(podcast => {

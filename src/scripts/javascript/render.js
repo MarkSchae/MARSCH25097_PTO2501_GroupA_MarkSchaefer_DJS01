@@ -2,6 +2,16 @@ import './data-handling.js';
 import { lastUpdated, updatedDate } from './helpers.js';
 
 // Write the class for rendering the static podcasts data
+/**
+ * Create a render instance.
+ * @param {HTMLElement} podcastsContainer - The container to append podcasts to.
+ * @param {Object[]} podcastsArray - The array of combined podcast objects.
+ */
+
+/**
+ * Render the modal for a single podcast.
+ * @param {string} podcastId - The ID of the podcast to display in the modal.
+ */
 export default class render {
     // Create the instance of this object using the DOM element that we intend to append the podcasts to
     constructor (podcastsContainer, podcastsArray) {

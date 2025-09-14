@@ -41,7 +41,7 @@ when the podcast information was updated  */
 }
 
 .exit-btn {
-    @apply w-3.5 h-3.5 cursor-pointer;
+    @apply w-3.5 h-3.5 cursor-pointer fixed top-2 right-2;
 }
 
 .season-card {
