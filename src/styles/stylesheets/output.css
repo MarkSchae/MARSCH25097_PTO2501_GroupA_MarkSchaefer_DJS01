@@ -7,8 +7,9 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-gray-100: oklch(96.7% 0.003 264.542);
     --color-gray-200: oklch(92.8% 0.006 264.531);
-    --color-gray-400: oklch(70.7% 0.022 261.325);
+    --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -236,6 +237,9 @@
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
@@ -261,10 +265,10 @@
 .podcast-card-mobile {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: calc(var(--spacing) * 4);
+  border-radius: 0.25rem;
   background-color: var(--color-white);
+  padding: calc(var(--spacing) * 3.5);
 }
 .podcast-modal-mobile {
   position: fixed;
@@ -286,20 +290,15 @@
   background-color: var(--color-white);
   padding: calc(var(--spacing) * 6);
 }
-.podcast-card-desktop {
-  @media (width >= 40rem) {
-    display: grid;
-  }
-  @media (width >= 40rem) {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
 .genre-display-styling {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.genre-name-card {
   border-radius: 0.25rem;
-  background-color: var(--color-gray-400);
+  background-color: var(--color-gray-300);
+  padding: calc(var(--spacing) * 1);
   --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
   box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   --tw-shadow-color: #000;
@@ -320,6 +319,26 @@
   height: calc(var(--spacing) * 3.5);
   width: calc(var(--spacing) * 3.5);
   cursor: pointer;
+}
+.season-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--spacing) * 2);
+  border-radius: 0.25rem;
+  background-color: var(--color-gray-100);
+  padding: calc(var(--spacing) * 2);
+  --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  @media (width >= 40rem) {
+    flex-direction: row;
+  }
+}
+.season-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 4);
 }
 @property --tw-font-weight {
   syntax: "*";

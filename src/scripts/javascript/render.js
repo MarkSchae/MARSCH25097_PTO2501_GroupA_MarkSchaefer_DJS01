@@ -22,7 +22,6 @@ export default class render {
             const podcastCardClasses = 'podcast-card-mobile podcast-card-desktop modal-btn';  
 
             // Split by spaces into an array, then spread into classList.add
-            //el.classList.add(...classes.split(" "));
             podcastCard.classList.add(...podcastCardClasses.split(' '));
 
             const podcastCoverImg = document.createElement('img');
@@ -36,9 +35,10 @@ export default class render {
             podcastSeasons.innerHTML = `${podcast.seasons} Seasons`
 
             const podcastGenres = document.createElement('div');
+            podcastGenres.classList.add('genre-display-styling')
             podcast.genreNames.forEach(genreName => {
                 const genre = document.createElement('div');
-                genre.classList.add('genre-display-styling');
+                genre.classList.add('genre-name-card');
                 genre.innerHTML = genreName.title;
                 podcastGenres.append(genre);
             });
@@ -47,6 +47,7 @@ export default class render {
             podcastLastUpdated.innerHTML = `Updated ${lastUpdated(podcast.updated)}`;
 
             podcastCard.append(podcastCoverImg, podcastTitle, podcastSeasons, podcastGenres, podcastLastUpdated);
+
             // Append to podcastsContainer
             this.podcastsContainer.append(podcastCard);
         });
@@ -67,16 +68,20 @@ export default class render {
             podcastModalImg.src = podcast.image;
             podcastModalImg.alt = `${podcast.title}: Cover Image`;
             // Description
+            const podcastDescriptionHeading = document.createElement('div');
+            podcastDescriptionHeading.innerHTML = 'Description';
             const podcastDescription = document.createElement('div');
             podcastDescription.innerHTML = podcast.description; 
             // Genres
             const podcastModalGenres = document.createElement('div');
             podcastModalGenres.innerHTML = 'Genres';
+            const genreCard = document.createElement('div');
+            genreCard.classList.add('genre-display-styling');
             podcast.genreNames.forEach(genreName => {
                 const genreModal = document.createElement('div');
-                genreModal.classList.add('genre-display-styling');
+                genreModal.classList.add('genre-name-card');
                 genreModal.innerHTML = genreName.title;
-                podcastModalGenres.append(genreModal);
+                genreCard.append(genreModal);
             });
             // Last updated as a normal date
             const podcastUpdatedDate = document.createElement('div');
@@ -85,13 +90,17 @@ export default class render {
             // Seasons heading - Season (season number), season information like episodes and title
             const podcastModalSeasons = document.createElement('div');
             podcastModalSeasons.innerHTML = 'Seasons';
+            podcastModalSeasons.classList.add('season-card-container')
             podcast.seasonsData.forEach(season => {
                 season.seasonDetails.forEach(season => {
+                    const seasonCard = document.createElement('div');
+                    seasonCard.classList.add('season-card');
                     const seasonTitle = document.createElement('div');
                     seasonTitle.innerHTML = season.title;
                     const seasonEpisodes = document.createElement('div');
                     seasonEpisodes.innerHTML = `Episodes: ${season.episodes}`;
-                    podcastModalSeasons.append(seasonTitle, seasonEpisodes);
+                    seasonCard.append(seasonTitle, seasonEpisodes)
+                    podcastModalSeasons.append(seasonCard);
                 })
             });
             // Create the exit button and the helper function to exit the modal
@@ -103,7 +112,7 @@ export default class render {
             const overlay = document.createElement('div');
             overlay.classList.add('backdrop');
             overlay.id = 'overlay-id';
-        podcastModalContainer.append(podcastModalTitle, podcastModalImg, podcastDescription, podcastModalGenres, podcastModalSeasons, exit);
+        podcastModalContainer.append(podcastModalTitle, podcastModalImg, podcastDescriptionHeading, podcastDescription, podcastModalGenres, genreCard, podcastModalSeasons, exit);
         this.podcastsContainer.append(podcastModalContainer, overlay);
     }
 

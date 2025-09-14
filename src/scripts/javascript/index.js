@@ -29,13 +29,19 @@ renderer.renderPodcastsCard();
 // Render the modal onclick
 // Add one event listner to the body to listen for all clicks, check if the click matches the 'target' of a class on the podcast DOM, then run the render method
 document.body.addEventListener('click', (click) => {
-    if (click.target.matches('.modal-btn')) {
-        const podcastId = click.target.dataset.podcast; // "btn123"
+    // Find the nearest parent (or self) that has the modal-btn class
+    const card = click.target.closest('.modal-btn');
+
+    if (card) {
+        const podcastId = card.dataset.podcast;
         renderer.renderPodcastsModal(podcastId); // Ensure data types are correct
-    }
+        return; // Click was outside a podcast card
+    } 
+
     if (click.target.matches('#exit-btn-id')) {
     renderer.removePodcastsModal();
     const overlayRemove = document.getElementById('overlay-id');
     overlayRemove.remove();
     }
 });
+
