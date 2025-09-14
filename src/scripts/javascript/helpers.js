@@ -21,4 +21,17 @@ export function lastUpdated (lastedUpdatedDate) {
     if (diffDays < 30) return `${diffDays} day/s ago`;
     if (diffMonths < 12) return `${diffMonths} month/s ago`;
     return `${diffYears} year/s ago`;
-}
+};
+
+export function updatedDate (dateString) {
+    const isoString = dateString;
+    const date = new Date(isoString);
+
+    const formatted = date.toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+    });
+    return formatted;
+};
+
