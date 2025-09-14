@@ -16,7 +16,7 @@ export default class render {
             // Loop the arrays and create the DOM elements to display the specific data
             // Need from podcasts array: cover img, title, amount of seasons, geners, last updated
             podcastCard = document.createElement('div');
-            const podcastCardClasses = 'podcast-card-mobile podcast-card-desktop';  
+            const podcastCardClasses = 'podcast-card-mobile podcast-card-desktop modal-btn';  
 
             // Split by spaces into an array, then spread into classList.add
             //el.classList.add(...classes.split(" "));
@@ -48,7 +48,88 @@ export default class render {
             this.podcastsContainer.append(podcastCard);
         });
     }
+
+    renderPodcastsModal (podcast) { // Parse the object
+        // Create the modal container DOM element
+        const podcastModalContainer = document.createElement('div');
+        podcastModalContainer.classList.add('podcast-modal-mobile'); // Add the sm: styling if needed
+        // Create and populate the DOM elements for the podcast data
+            // Title
+            const podcastModalTitle = document.createElement('div')
+            podcastModalTitle.innerHTML = podcast.title; 
+            // Large cover img
+            const podcastModalImg = document.createElement('img');
+            podcastModalImg.src = podcast.img;
+            podcastModalImg.alt = `${podcast.title}: Cover Image`;
+            // Description
+            const podcastDescription = document.createElement('div');
+            podcastDescription.innerHTML = podcast.description; 
+            // Genres
+            const podcastModalGenres = document.createElement('div');
+            podcast.genreNames.forEach(genreName => {
+                const genreModal = document.createElement('div');
+                genreModal.classList.add('genre-display-styling');
+                genreModal.innerHTML = genreName;
+                podcastModalGenres.append(genreModal);
+            });
+            // Last updated as a normal date
+            // Seasons heading - Season (season number), season information like episodes and title
+        // Create and reveal the backdrop to focus the viewer on the modal
+        // Create the exit button and the helper function to exit the modal
+    }
 } 
+
+/*<script>
+    function detailedTasksView (task, taskDiv) {
+  // Delete existing button elements
+  const existingButton = document.getElementById('btn-save-changes');
+  if (existingButton) {
+    existingButton.remove();
+  }
+  const oldDeleteBtn = document.getElementById('delete-task-btn');
+  if (oldDeleteBtn) {
+    oldDeleteBtn.remove();
+  }
+  // Save changes/edits button
+  const button = document.createElement('button');
+  button.id = 'btn-save-changes';
+  button.innerHTML = 'Save Changes';
+  button.className = 'click-hover button-default';
+  button.addEventListener('click', () => saveChanges(task, taskDiv));
+  const detailedTaskCard = document.getElementById('detailed-task-card');
+  // Delete/remove task
+  const deleteBtn = document.createElement('button');
+  deleteBtn.id = 'delete-task-btn';
+  deleteBtn.innerHTML = 'Delete Task';
+  deleteBtn.className = 'click-hover button-default';
+  deleteBtn.addEventListener('click', () => deleteTask(task));
+  detailedTaskCard.appendChild(deleteBtn);
+  detailedTaskCard.appendChild(button);
+  const overlay = document.getElementById('backdrop');
+  if (detailedTaskCard.classList.contains('hidden')) {
+    detailedTaskCard.classList.remove('hidden');
+    detailedTaskCard.classList.add('detailed-card-styling');
+    overlay.classList.remove('hidden');
+    document.getElementById('edit-title').value = task.title;
+    document.getElementById('edit-description').value = task.description;
+    document.getElementById('edit-task-status').value = task.status;
+    document.getElementById('edit-task-priority').value = task.priority;
+  }
+};
+
+// Might need to moduralize the exit button function
+// The function to return the page to normal when exiting the detailed view
+function exitTasksView () {
+  const detailedTaskCard = document.getElementById('detailed-task-card');
+  const taskModal = document.getElementById('add-task-modal');
+  const overlay = document.getElementById('backdrop'); 
+  detailedTaskCard.classList.add('hidden');
+  taskModal.classList.add('hidden');
+  detailedTaskCard.classList.remove('detailed-card-styling');
+  taskModal.classList.remove('detailed-card-styling');
+  overlay.classList.add('hidden');
+};
+</script>
 
 
 /* Render class and methods

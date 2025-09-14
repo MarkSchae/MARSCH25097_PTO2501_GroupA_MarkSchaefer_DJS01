@@ -20,3 +20,10 @@ const combinedArrayData = relationalMapper.combineStaticArrays(podcasts, genres,
 const podcastsContainer = document.getElementById('podcasts-container');
 const renderer = new render(podcastsContainer);
 renderer.renderPodcastsCard(combinedArrayData);
+
+// Render the modal onclick
+document.body.addEventListener('click', (click) => {
+    if (click.target.matches('.modal-btn')) {
+        console.log('Clicked button:', click.target.textContent);
+    }
+});

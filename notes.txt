@@ -9,3 +9,7 @@ A class to handle rendering the task array object
 Combine the arrays of static data making it easier to display the data 
 
 Save the new combined array into local storage so that the new array can be saved after any changes
+
+Need to find a way to be able to write autocomplete tailwind in a js file for adding classlist properties
+
+Think about a helper function for creating DOM elements

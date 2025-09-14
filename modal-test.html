@@ -1,0 +1,96 @@
+<!-- ========== Modal view code example from Kanban project 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <div id="backdrop" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+        <div id="detailed-task-card" class="hidden fixed z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white">
+            <div class="flex justify-between">
+                <h6>Task</h6>
+                <img class="exit-btn w-3.5 h-3.5" id="edit-task-exit-button" src="/images/exit.png" alt="Red Exit Button">
+            </div>
+            <div class="flex flex-col gap-6">
+                <label class="label-color" for="edit-title">Title</label>
+                <input class="input-border bg-white" id="edit-title" type="text">
+            </div>
+            <div class="flex flex-col gap-6">
+                <label class="label-color" for="edit-description">Description</label>
+                <textarea class="input-border h-[112px] bg-white" id="edit-description" placeholder="Edit Description"></textarea>
+            </div>
+            <div class="flex flex-col gap-6">
+                <label class="label-color" for="edit-task-status">Status</label>
+                <select class="input-border bg-white" name="edit-task-status" id="edit-task-status">
+                    <option value="todo">Todo</option>
+                    <option value="done">Done</option>
+                    <option value="doing">Doing</option>
+                </select>
+            </div>
+            <div class="flex flex-col gap-6">
+                <label class="label-color" for="edit-task-priority">Priority</label>
+                <select class="input-border bg-white" name="edit-task-priority" id="edit-task-priority">
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                </select>
+            </div>
+        </div>
+</body>
+</html>
+
+<script>
+    function detailedTasksView (task, taskDiv) {
+  // Delete existing button elements
+  const existingButton = document.getElementById('btn-save-changes');
+  if (existingButton) {
+    existingButton.remove();
+  }
+  const oldDeleteBtn = document.getElementById('delete-task-btn');
+  if (oldDeleteBtn) {
+    oldDeleteBtn.remove();
+  }
+  // Save changes/edits button
+  const button = document.createElement('button');
+  button.id = 'btn-save-changes';
+  button.innerHTML = 'Save Changes';
+  button.className = 'click-hover button-default';
+  button.addEventListener('click', () => saveChanges(task, taskDiv));
+  const detailedTaskCard = document.getElementById('detailed-task-card');
+  // Delete/remove task
+  const deleteBtn = document.createElement('button');
+  deleteBtn.id = 'delete-task-btn';
+  deleteBtn.innerHTML = 'Delete Task';
+  deleteBtn.className = 'click-hover button-default';
+  deleteBtn.addEventListener('click', () => deleteTask(task));
+  detailedTaskCard.appendChild(deleteBtn);
+  detailedTaskCard.appendChild(button);
+  const overlay = document.getElementById('backdrop');
+  if (detailedTaskCard.classList.contains('hidden')) {
+    detailedTaskCard.classList.remove('hidden');
+    detailedTaskCard.classList.add('detailed-card-styling');
+    overlay.classList.remove('hidden');
+    document.getElementById('edit-title').value = task.title;
+    document.getElementById('edit-description').value = task.description;
+    document.getElementById('edit-task-status').value = task.status;
+    document.getElementById('edit-task-priority').value = task.priority;
+  }
+};
+
+// Might need to moduralize the exit button function
+// The function to return the page to normal when exiting the detailed view
+function exitTasksView () {
+  const detailedTaskCard = document.getElementById('detailed-task-card');
+  const taskModal = document.getElementById('add-task-modal');
+  const overlay = document.getElementById('backdrop'); 
+  detailedTaskCard.classList.add('hidden');
+  taskModal.classList.add('hidden');
+  detailedTaskCard.classList.remove('detailed-card-styling');
+  taskModal.classList.remove('detailed-card-styling');
+  overlay.classList.add('hidden');
+};
+</script>
+========== --> 
