@@ -32,7 +32,7 @@ document.body.addEventListener('click', (click) => {
     // Find the nearest parent (or self) that has the modal-btn class
     const card = click.target.closest('.modal-btn');
 
-    if (card) {
+    if (card) { // Checking if the element/target does exist in the DOM
         const podcastId = card.dataset.podcast;
         renderer.renderPodcastsModal(podcastId); // Ensure data types are correct
         return; // Click was outside a podcast card

@@ -20,7 +20,8 @@ export function lastUpdated (lastedUpdatedDate) {
     const diffMonths = Math.floor(diffDays / 30);
     const diffYears = Math.floor(diffDays / 365);
     // Return the difference and the x time ago string for each time period
-    if (diffSec < 60) return "just now";
+    // Refine this
+    if (diffSec < 60) return 'Just Now';
     if (diffMin < 60) return `${diffMin} minute/s ago`;
     if (diffHours < 24) return `${diffHours} hour/s ago`;
     if (diffDays < 30) return `${diffDays} day/s ago`;

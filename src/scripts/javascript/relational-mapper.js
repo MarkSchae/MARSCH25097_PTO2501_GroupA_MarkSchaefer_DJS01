@@ -25,6 +25,7 @@ export default class relationalMapper {
                 // Run the find method on the genres array, for every genres object return the genre object where the genre.id is equal to the current podcast object genre field value id
                 genreNames: podcast.genres.map(podcastGenreId => genres.find(genre => genre.id === podcastGenreId)),
                 // Do the same thing here with the seasons array
+                // Filter returns all the objects that satisfy the condition
                 seasonsData: seasons.filter(season => season.id === podcast.id)
             }
         });

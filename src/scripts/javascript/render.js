@@ -27,13 +27,12 @@ export default class render {
             // Loop the arrays and create the DOM elements to display the specific data
             // Need from podcasts array: cover img, title, amount of seasons, geners, last updated
             const podcastCard = document.createElement('div');
-            podcastCard.dataset.podcast = podcast.id;
+            podcastCard.dataset.podcast = podcast.id; // Remember that the dataset attribute is viable to anyone
 
             const podcastCardClasses = 'podcast-card-mobile podcast-card-desktop modal-btn';  
 
             // Split by spaces into an array, then spread into classList.add
-            podcastCard.classList.add(...podcastCardClasses.split(' '));
-
+            podcastCard.classList.add(...podcastCardClasses.split(' ')); // ('item' 'item2')
             const podcastCoverImg = document.createElement('img');
             podcastCoverImg.src = podcast.image;
             podcastCoverImg.alt = `${podcast.title}: Cover Image`;
